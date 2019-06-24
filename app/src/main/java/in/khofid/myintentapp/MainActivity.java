@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button btnMoveActivity;
     Button btnMoveWithDataActivity;
+    Button btnMoveWithObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnMoveWithDataActivity = findViewById(R.id.btn_move_activity_data);
         btnMoveWithDataActivity.setOnClickListener(this);
+
+        btnMoveWithObject = findViewById(R.id.btn_move_activity_object);
+        btnMoveWithObject.setOnClickListener(this);
     }
 
     @Override
@@ -35,6 +39,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intentWithData.putExtra(MoveWithDataActivity.EXTRA_NAME, "Dicoding Academy");
                 intentWithData.putExtra(MoveWithDataActivity.EXTRA_AGE, 5);
                 startActivity(intentWithData);
+                break;
+            case R.id.btn_move_activity_object:
+                Person person = new Person();
+                person.setName("Bambang");
+                person.setAge(10);
+                person.setEmail("bambang@gmail.com");
+                person.setCity("Jakarta");
+
+                Intent moveWithObjectIntent = new Intent(MainActivity.this, MoveWithObjectActivity.class);
+                moveWithObjectIntent.putExtra(MoveWithObjectActivity.EXTRA_PERSON, person);
+                startActivity(moveWithObjectIntent);
                 break;
         }
     }
